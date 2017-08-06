@@ -9,6 +9,7 @@ if (process.argv[2] == 'pretty') {
 }
 
 function pretty() {
+  console.time('Completion time')
   let a = 0
   let b = 1
   let sumOutput = 0;
@@ -32,9 +33,11 @@ function pretty() {
   log(`---------------`)
   log(`Sum Output: ${chalk.green(sumOutput)}`)
   log(`---------------`)
+  console.timeEnd('Completion time')
 }
 
 function clean() {
+  console.time('Completion time')
   let a = 0
   let b = 1
   let sumOutput = 0;
@@ -47,4 +50,5 @@ function clean() {
     b = a + b
   }
   log(sumOutput)
+  console.timeEnd('Completion time')
 }
