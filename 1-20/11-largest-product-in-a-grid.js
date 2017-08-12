@@ -31,8 +31,8 @@ function clean() {
   console.time('Completion time')
   leftToRight();
   topToBottom();
-  // diagonalTopToBottom();
-  // diagonalBottomToTop();
+  diagonalTopToBottom();
+  diagonalBottomToTop();
   log(largestProduct)
   console.timeEnd('Completion time');
 }
@@ -44,7 +44,6 @@ function leftToRight() {
         return a * b;
       })
       if(productToCheck > largestProduct) {
-        log(largestProduct)
         largestProduct = productToCheck;
       }
     }
@@ -60,7 +59,6 @@ function topToBottom() {
         return a * b
       })
       if(productToCheck > largestProduct) {
-        log(largestProduct)
         largestProduct = productToCheck
       }
     }
@@ -68,11 +66,33 @@ function topToBottom() {
 }
 
 function diagonalTopToBottom() {
-
+  for(let i = 0; i < numberGridArray.length - 4; i ++) {
+    for(let j = 0; j < numberGridArray.length - 4; j++) {
+      let productArrayToCheck = []
+      productArrayToCheck.push(numberGridArray[i][j], numberGridArray[i+1][j+1], numberGridArray[i+2][j+2], numberGridArray[i+3][j+3])
+      let productToCheck = productArrayToCheck.reduce(function(a, b) {
+        return a * b
+      })
+      if(productToCheck > largestProduct) {
+        largestProduct = productToCheck
+      }
+    }
+  }
 }
 
 function diagonalBottomToTop() {
-
+  for(let i = 3; i < numberGridArray.length; i ++) {
+    for(let j = 0; j < numberGridArray.length - 4; j++) {
+      let productArrayToCheck = []
+      productArrayToCheck.push(numberGridArray[i][j], numberGridArray[i-1][j+1], numberGridArray[i-2][j+2], numberGridArray[i-3][j+3])
+      let productToCheck = productArrayToCheck.reduce(function(a, b) {
+        return a * b
+      })
+      if(productToCheck > largestProduct) {
+        largestProduct = productToCheck
+      }
+    }
+  }
 }
 
 clean();
