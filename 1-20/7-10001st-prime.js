@@ -3,12 +3,12 @@
 
 const log = console.log;
 
-async function clean() {
+function clean() {
   console.time('Completion time')
   let knownPrimes = 0;
   let thenThousandAndFirstPrime;
   for(let i = 2; knownPrimes < 10001; i++) {
-    const numberChecked = await isPrime(i)
+    const numberChecked = isPrime(i)
     if (numberChecked) {
       knownPrimes += 1
       thenThousandAndFirstPrime = i;
