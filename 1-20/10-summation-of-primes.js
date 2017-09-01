@@ -3,43 +3,26 @@
 
 const log = console.log;
 
-const primesArray = []
+let primesArray = 0;
 
-async function clean() {
+function clean() {
   console.time('Completion time')
-  let primeSum = 0
   for(let i = 2; i < 2000000; i++) {
-    if(primesArray.length < 10) {
-      if(testPrime(i)) {
-        primeSum += i;
-        primesArray.push(i)
-      }
-    } else if(primesArray.length >= 10) {
-      if(testPrimeAgainstArray(i)) {
-        primesArray.push(i)
-        primeSum += i;
-      }
+    const numberChecked = isPrime(i)
+    if (numberChecked) {
+      primesArray += i;
     }
   }
-  log(primeSum)
+  log(primesArray)
   console.timeEnd('Completion time');
 }
 
-function testPrime(i) {
+function isPrime(i) {
   let j = 2;
   let divisors = 0
-  for(j; j < i; j++) {
+  for(j; j <= Math.round(Math.sqrt(i)); j++) {
     if (i % j == 0) {
-      return false
-    }
-  }
-  return i;
-}
-
-function testPrimeAgainstArray(i) {
-  for(let j = 1; j <= primesArray.length; j++) {
-    if (i % primesArray[j] == 0) {
-      return false
+      return false;
     }
   }
   return i;
