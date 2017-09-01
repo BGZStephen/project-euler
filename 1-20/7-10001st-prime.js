@@ -20,13 +20,10 @@ function clean() {
 
 
 function isPrime(i) {
-  let j = 1;
+  let j = 2;
   let divisors = 0
-  for(j; j <= i; j++) {
+  for(j; j <= Math.round(Math.sqrt(i)); j++) {
     if (i % j == 0) {
-      divisors ++
-    }
-    if ( divisors > 2 ){
       return false;
     }
   }
