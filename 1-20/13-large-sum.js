@@ -1,4 +1,4 @@
-// In the 20×20 grid below, four numbers along a diagonal line have been marked in red.
+// Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
 
 const log = console.log;
 
