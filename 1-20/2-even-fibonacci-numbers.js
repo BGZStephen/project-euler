@@ -40,14 +40,18 @@ function clean() {
   console.time('Completion time')
   let a = 0
   let b = 1
+  let c = a + b;
   let sumOutput = 0;
-  for(a = a + b; b <= 4000000; a += b) {
-    if(a % 2 == 0) {
-      sumOutput += a;
-    } else if (b % 2 == 0) {
-      sumOutput += b;
+  while(c <= 4000000) {
+    if(c % 2 == 0) {
+      sumOutput += c;
     }
-    b = a + b
+
+    let newA = b;
+    let newB = a + b;
+    a = newA;
+    b = newB;
+    c = newA + newB;
   }
   log(sumOutput)
   console.timeEnd('Completion time')
