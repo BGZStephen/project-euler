@@ -28,11 +28,21 @@ function pretty() {
 function clean() {
   console.time('Completion time')
   let sumValue = 0
-  for(let i = 0; i < 1000; i++) {
-    if(i % 3 == 0 || i % 5 == 0) {
-      sumValue += i;
-    }
+  let multiplesOf3 = 3;
+  let multiplesOf5 = 5;
+
+  while(multiplesOf3 < 1000) {
+    sumValue += multiplesOf3;
+    multiplesOf3 += 3;
   }
+
+  while(multiplesOf5 < 1000) {
+    if (multiplesOf5 % 3 !== 0) {
+      sumValue += multiplesOf5;
+    }
+    multiplesOf5 += 5;
+  }
+
   log(sumValue)
   console.timeEnd('Completion time')
 }
